@@ -1,6 +1,6 @@
 <template>
    <div>
-      <p class="text-blue-500 cursor-pointer  font-bold  text-sm  py-1 mr-1 mb-1 " v-on:click="toggleModal()">
+      <p class="text-blue-500 cursor-pointer font-bold text-sm py-1 mr-1 " v-on:click="toggleModal()">
          Crie sua conta
       </p>
       <div v-if="showModal"
@@ -10,8 +10,8 @@
             <div
                class="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
                <!--header-->
-               <div class="flex items-start justify-center p-3 px-8 mx-8 border-b border-solid border-slate-200 rounded-t">
-                  <h3 class="text-2xl  font-semibold">
+               <div class="flex  justify-center p-3 px-8 mx-8 border-b border-solid border-slate-200 rounded-t">
+                  <h3 class="text-xl font-bold">
                      Criação de Usuário
                   </h3>
                </div>
@@ -34,24 +34,26 @@
                      <h4 class="text-sm font-semibold">Nome</h4>
                      <input 
                         type="text" 
-                        
+                        v-model="name"
                         class="px-3 mb-3 apperance-none shadow-md block w-full py-3 leading-tight text-gray-700 bg-gray-50 focus:bg-white border border-gray-200 focus:border-gray-500 rounded focus:outline-none"
                         placeholder="Seu Nome">
                      <h4 class="text-sm font-semibold">E-mail</h4>
                      <input 
                         type="email" 
+                        v-model="email"
                         class="mb-3 apperance-none shadow-md block w-full py-3 px-4 leading-tight text-gray-700 bg-gray-50 focus:bg-white border border-gray-200 focus:border-gray-500 rounded focus:outline-none"
                         placeholder="Seu E-mail">
                      <div class="flex justify-between">
-                        <div>
+                        <div class="mr-2">
                         <h4 class="text-sm font-semibold">Telefone</h4>
                         <input 
-                           type="tel" 
-                           class="mb-3 apperance-none shadow-md block w-full py-3 px-4 leading-tight text-gray-700 bg-gray-50 focus:bg-white border border-gray-200 focus:border-gray-500 rounded focus:outline-none"
+                           type="tel" maxlength="12"
+                           onkeypress="return event.charCode >= 48 && event.charCode <= 57"
+                           class="mb-3 apperance-none shadow-md block w-full mr-4  py-3 px-4 leading-tight text-gray-700 bg-gray-50 focus:bg-white border border-gray-200 focus:border-gray-500 rounded focus:outline-none"
                            placeholder="Seu Telefone">
                         </div>
-                        <div>
-                           <h4 class="text-sm font-semibold ">Idade</h4>
+                        <div class="ml-2">
+                           <h4 class="text-sm font-semibold  ">Idade</h4>
                         <input 
                            type="number" 
                            class="mb-3 apperance-none shadow-md block w-full py-3 px-4 leading-tight text-gray-700 bg-gray-50 focus:bg-white border border-gray-200 focus:border-gray-500 rounded focus:outline-none"
@@ -86,7 +88,7 @@
                   </div>
                
                   <!--footer-->
-                  <div class="flex items-center justify-end p-3 border-t border-solid border-slate-200 rounded-b">
+                  <div class="flex items-center justify-between p-3 border-t border-solid border-slate-200 rounded-b">
                      <button
                         class="text-blue-500 background-transparent font-semibold  px-6 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
                         type="button" v-on:click="toggleModal()">
@@ -94,7 +96,7 @@
                      </button>
                      <button
                         class="text-blue-500 bg-transparent border border-solid border-blue-500 hover:bg-blue-500 hover:text-white active:bg-red-600 font-bold text-sm px-6 py-3 rounded outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
-                        type="submit" >
+                        type="submit" v-on:click="formValid()" >
                         Criar
                      </button>
                   </div>
@@ -114,7 +116,7 @@ export default {
       return {
          showModal: false,
          name: null,
-         email:null,
+         email: null,
          errors: []
       }
    },
@@ -131,11 +133,14 @@ export default {
          if(!this.email){
              this.errors.push('O email deve ser preenchido!');
          }
-         if(this.name && this.email){
+      },
+      formValid: function(){
+         if(this.name && this.email) {
+            this.showModal = false;
             this.errors = [];
          }
-
       }
+
    }
 }
 </script>
