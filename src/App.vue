@@ -1,40 +1,43 @@
 <template>
-  <div class="w-screen h-screen flex items-center justify-center bg-blue-400">
-    <!-- <div class="bg-white rounded-3xl shadow-xl w-full sm:10/12 md:w-8/12 lg:w-6/12 p-6"> -->
-      <div class="bg-white mx-auto max-w-md py-8 px-12 shadow rounded-xl">
-      <!-- <h4 class="font-semibold text-md mb-3 border-b border-gray-200">Identificação de usuário</h4> -->
-      <!-- <div class="mb-4 justify-center">
-        <img class="" width="200" height="300px" src="./assets/autlogo.svg" alt="">
-      </div> -->
-      <div class="space-y-3">
-        <input
-          type="text"
-          class="px-3 rounded-lg py-2 placeholder-gray-200 border border-gray-300 w-full"
-          placeholder="Seu Nome"
-        >
-        <input
-          type="text"
-          class="px-3 py-2 rounded-lg placeholder-gray-200 border border-gray-300 w-full"
-          placeholder="Seu Telefone"
-        >
-        <input
-          type="text"
-          class="px-3 py-2 rounded-lg placeholder-gray-200 border border-gray-300 w-full"
-          placeholder="Seu Email"
-        >
-        <input
-          type="text"
-          class="px-3 py-2 rounded-lg placeholder-gray-200 border border-gray-300 w-full"
-          placeholder="Seu Telefone"
-        >
+  <!-- img full -->
+  <div class="min-h-screen bg-white flex">
+    <div class="hidden lg:block relative w-0 flex-1 bg-gray-900">
+      <div class="flex h-full justify-center items-center">
+        <img src="./assets/perfillogo.svg" alt="" class="h-80 w-full">
+      </div>
+    </div>
 
-        <div class="text-right">
-          <button class="rounded text-sm px-3 py-2 bg-blue-400 hover:bg-blue-500 text-gray-900">
-            LOGIN
-          </button>
+<!-- img small and form -->
+    <div class="flex flex-1 flex-col justify-center px-4 py-12 sm:px-6 lg:flex-none lg:px-20 xl:px-24">
+      <div class="mx-auto w-full max-w-sm lg:w-96 ">
+        <div>
+          <img src="./assets/perfillogo.svg" alt="" class="lg:hidden h-20 w-full">
+          <H2 class="mt-6 text-3xl font-semibold text-blue-400">Entrar</H2>
+          <p class="mt-2 text-sm text-gray-600 max-w">Novo por aqui? <a href="#" class="font-medium text-blue-400" ></a></p>
+        </div>
+        <div class="mt-6">
+          <form action="">
+            <div class="mb-4">
+              <input 
+                type="text" 
+                placeholder="E-mail"
+                class="apperance-none block w-full py-3 px-4 leading-tight text-gray-700 bg-gray-50 focus:bg-white border border-gray-200 focus:border-gray-500 rounded focus:outline-none">
+            </div>
+            <div class="mb-4">
+              <input 
+                type="text" 
+                placeholder="Senha"
+                class="apperance-none block w-full py-3 px-4 leading-tight text-gray-700 bg-gray-50 focus:bg-white border border-gray-200 focus:border-gray-500 rounded focus:outline-none">
+            </div>
+            <div class="mb-4">
+              <button class="inline-block w-full py-4 px-8 leading-none text-white bg-blue-400 hover:bg-blue-900 font-semibold rounded shadow">Entrar</button>
+            </div>
+
+          </form>
         </div>
       </div>
     </div>
+
   </div>
 
 
