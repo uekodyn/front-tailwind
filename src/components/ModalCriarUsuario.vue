@@ -18,29 +18,29 @@
                <!--body form -->
                <div class="relative p-6 flex-auto ">
                   <div class="relative justify-center flex">
-                     <div class="relative  w-36 h-36 justify-center overflow-hidden bg-gray-100 rounded-full dark:bg-gray-600">
+                     <div class="relative cursor-pointer w-36 h-36 justify-center overflow-hidden bg-gray-100 rounded-full dark:bg-gray-600">
                         <svg class="absolute  w-36 h-36 text-gray-400 " fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd"></path></svg>
                      </div>
                   </div>
                   <h4 class="text-sm font-semibold">Nome</h4>
                   <input 
                      type="text" 
-                     class="px-3 mb-3 apperance-none block w-full py-3 leading-tight text-gray-700 bg-gray-50 focus:bg-white border border-gray-200 focus:border-gray-500 rounded focus:outline-none"
+                     class="px-3 mb-3 apperance-none shadow-md block w-full py-3 leading-tight text-gray-700 bg-gray-50 focus:bg-white border border-gray-200 focus:border-gray-500 rounded focus:outline-none"
                      placeholder="Seu Nome">
                   <h4 class="text-sm font-semibold">Telefone</h4>
                   <input 
                      type="text" 
-                     class="mb-3 apperance-none block w-full py-3 px-4 leading-tight text-gray-700 bg-gray-50 focus:bg-white border border-gray-200 focus:border-gray-500 rounded focus:outline-none"
+                     class="mb-3 apperance-none shadow-md block w-full py-3 px-4 leading-tight text-gray-700 bg-gray-50 focus:bg-white border border-gray-200 focus:border-gray-500 rounded focus:outline-none"
                      placeholder="Seu Telefone">
                   <h4 class="text-sm font-semibold">E-mail</h4>
                   <input 
                      type="text" 
-                     class="mb-3 apperance-none block w-full py-3 px-4 leading-tight text-gray-700 bg-gray-50 focus:bg-white border border-gray-200 focus:border-gray-500 rounded focus:outline-none"
+                     class="mb-3 apperance-none shadow-md block w-full py-3 px-4 leading-tight text-gray-700 bg-gray-50 focus:bg-white border border-gray-200 focus:border-gray-500 rounded focus:outline-none"
                      placeholder="Seu E-mail">
                   <h4 class="text-sm font-semibold">Idade</h4>
                   <input 
                      type="text" 
-                     class="mb-3 apperance-none block w-full py-3 px-4 leading-tight text-gray-700 bg-gray-50 focus:bg-white border border-gray-200 focus:border-gray-500 rounded focus:outline-none"
+                     class="mb-3 apperance-none shadow-md block w-full py-3 px-4 leading-tight text-gray-700 bg-gray-50 focus:bg-white border border-gray-200 focus:border-gray-500 rounded focus:outline-none"
                      placeholder="Sua Idade">
                   <!-- term privacy -->
                   <div>
