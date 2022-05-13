@@ -44,15 +44,12 @@
             </div>
          </div>
       </div>
-
    </div>
-
-
 </template>
 
 <script>
-import HelloWorldVue from "./components/HelloWorld.vue"
 import ModalCriarUsuario from "./components/ModalCriarUsuario.vue"
+
 
 export default {
    name: "App",
