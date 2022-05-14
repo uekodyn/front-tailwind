@@ -1,4 +1,10 @@
-# frontapp
+# Login and registration page made with Vue + Tailwind
+
+Neste formulário foi utilizado:
+
+Tailwind 2
+Vue 3 
+Node 16.15
 
 ## Project setup
 ```
