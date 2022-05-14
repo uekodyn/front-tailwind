@@ -7,7 +7,8 @@ Vue 3
 Node 16.15
 
 <p align="center">
-   <img width="470" src="scr/assets/perfillogo.svg">
+   <img width="470" src="src/assets/perfillogo.svg">
+   
 </p>
 
 ## Project setup
