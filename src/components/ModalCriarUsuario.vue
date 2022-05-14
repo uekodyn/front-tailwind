@@ -16,39 +16,41 @@
                   </h3>
                </div>
                <!--body form -->
-               <div class="relative p-6 flex-auto ">
-                  <div class="flex justify-start">
+               <div class="relative p-6 -mt-2 flex-auto ">
+                  <!-- <div class="flex justify-start">
                      <span class="text-sm font-semibold">Avatar</span>
-                  </div>
+                  </div> -->
 
 
                   <div class="relative justify-center  flex">
                         <!-- Card Avatar -->
-                        <section class="w-64 mx-auto bg-[#20354b] rounded-2xl px-6 py-6 shadow-lg">
+                        <section class="w-64 mx-auto bg-[#20354b] rounded-2xl px-6 py-4 shadow-md">
                            <div class="flex items-center justify-between">
-                                 <span class="text-gray-400 text-sm">2d ago</span>
+                                 <span class="text-gray-400 text-sm">Perfil</span>
                                  <span class="text-emerald-400">
                                     <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z" />
                                  </svg>
                                  </span>
                            </div>
-                           <div class="mt-6 w-fit mx-auto">
-                                 <label>
-                                 <div v-if="imageData.length < 1" class="file-upload-form relative cursor-pointer w-20 h-20 justify-center overflow-hidden bg-gray-100 rounded-full dark:bg-gray-600">
-                                    <svg class="absolute  w-20 h-20 text-gray-400 " fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd"></path></svg>
-                                 </div>
-                                 <input type='file' class="hidden" @change="previewImage" accept="image/*"  />        
-                                 <!-- avatar preview -->
-                                 <div class="image-preview" v-if="imageData.length > 0">
-                                    <img class="preview relative cursor-pointer w-20 h-20 justify-center overflow-hidden bg-gray-100 rounded-full dark:bg-gray-600" :src="imageData">
-                                 </div>
-                                 </label>
-                           </div>
+                           <div class="flex justify-between">
+                              <div  class="mt-2 w-fit mx-auto">
+                                    <label>
+                                    <div v-if="imageData.length < 1" class="file-upload-form relative cursor-pointer w-20 h-20 justify-center overflow-hidden bg-gray-100 rounded-full dark:bg-gray-600">
+                                       <svg class="absolute  w-20 h-20 text-gray-400 " fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd"></path></svg>
+                                    </div>
+                                    <input type='file' class="hidden" @change="previewImage" accept="image/*"  />        
+                                    <!-- avatar preview -->
+                                    <div class="image-preview" v-if="imageData.length > 0">
+                                       <img class="preview relative cursor-pointer w-20 h-20 justify-center overflow-hidden bg-gray-100 rounded-full dark:bg-gray-600" :src="imageData">
+                                    </div>
+                                    </label>
+                              </div>
 
-                           <div class="mt-4 ">
-                                 <h2 class="text-white font-bold text-2xl tracking-wide">Jonathan <br/> Smith</h2>
+                           <div class="mt-2 ">
+                              <h2 class="text-white font-bold text-xl tracking-wide"></h2>
                            </div>  
+                           </div>
                         </section>                  
                   </div>
                   <!-- form valid -->
@@ -110,9 +112,9 @@
                   </div>
                
                   <!--footer-->
-                  <div class="flex items-center justify-between p-3 border-t border-solid border-slate-200 rounded-b">
+                  <div class="flex items-center justify-between p-3 -mb-6 border-t border-solid border-slate-200 rounded-b">
                      <button
-                        class="text-blue-500 background-transparent font-semibold  px-6 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+                        class="text-blue-500 background-transparent font-semibold  px-6 py-2 text-sm outline-none focus:outline-none mr-1  ease-linear transition-all duration-150"
                         type="button" v-on:click="toggleModal()">
                         Cancelar
                      </button>
