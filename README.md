@@ -7,7 +7,7 @@ Vue 3
 Node 16.15
 
 <p align="center">
-   <img width="600" src="src/assets/readme/tela-cadastro.jpg">
+   <img width="1200" src="src/assets/readme/tela-cadastro.jpg">
    
 </p>
 
