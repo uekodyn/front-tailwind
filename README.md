@@ -6,6 +6,10 @@ Tailwind 2
 Vue 3 
 Node 16.15
 
+<p align="center">
+   <img width="470" src="scr/assets/perfillogo.svg">
+</p>
+
 ## Project setup
 ```
 npm install
