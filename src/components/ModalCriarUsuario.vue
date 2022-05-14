@@ -17,10 +17,7 @@
                </div>
                <!--body form -->
                <div class="relative p-6 -mt-4 flex-auto ">
-                  <!-- <div class="flex justify-start">
-                     <span class="text-sm font-semibold">Avatar</span>
-                  </div> -->
-                  <CardPerfil  :name="name" :email="email"  />               
+                  <CardPerfil  :name="name" :email="email" :tel="tel" :idade="idade"  />               
                   <!-- form valid -->
                   <form id="Form" action="" v-on:submit.prevent="checkForm">
                      <h4 class="text-sm font-semibold">Nome</h4>
@@ -28,6 +25,7 @@
                         type="text" maxlength="20"
                         v-model="name"
                         required
+                        pattern="[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ ]+$"
                         class="px-3 mb-3 apperance-none shadow-md block w-full py-3 leading-tight text-gray-700 bg-gray-50 focus:bg-white border border-gray-200 focus:border-gray-500 rounded focus:outline-none"
                         placeholder="Seu nome e sobrenome">
                      <h4 class="text-sm font-semibold">E-mail</h4>
@@ -103,7 +101,7 @@
                         Cancelar
                      </button>
                      <button
-                        class="text-blue-500 bg-transparent border border-solid border-blue-500 hover:bg-blue-500 hover:text-white active:bg-red-600 font-bold text-sm px-6 py-3 rounded outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+                        class="text-blue-500 bg-transparent border border-solid border-blue-500 hover:bg-blue-500 hover:text-white active:bg-blue-600 font-bold text-sm px-6 py-3 rounded outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
                         type="submit" v-on:click="formValid()" >
                         Criar
                      </button>
@@ -141,6 +139,7 @@ export default {
    methods: {
       toggleModal: function () {
          this.showModal = !this.showModal;
+         this.resetForm();
       },
       checkForm: function(){
          if (this.name && this.email && this.tel && idade ) {
@@ -161,7 +160,7 @@ export default {
       formValid: function(){
          if(this.name && this.email && this.tel && this.idade && this.checkbox) {
             this.errors = [];
-            this.$emit('Criou')
+            this.$emit('criou')
             this.showModal = false;
             this.resetForm();
          };

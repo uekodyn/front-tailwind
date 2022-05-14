@@ -10,7 +10,7 @@
                </svg>
                </span>
          </div>
-         <div class="flex  justify-start">
+         <div class="flex  justify-start ">
             <div  class="mt-2 w-fit">
                <label>
                <div v-if="imageData.length < 1" class="max-w-xs hover:scale-110 transition duration-300 ease-in-out file-upload-form relative cursor-pointer w-20 h-20 justify-center overflow-hidden bg-gray-100 rounded-full dark:bg-gray-600">
@@ -23,10 +23,13 @@
                </div>
                </label>
             </div>
-            <div class="mt-2 mx-2 max-w-xs hover:scale-110 transition duration-300 ease-in-out">
-               <h2 class="text-gray-400 font-semibold text-lg mx-2 tracking-wide">{{ name }}</h2>
-               <h4 class="text-gray-400 font-semibold text-xs mx-2 tracking-wide">{{ email }}</h4>
-
+            <div class="mt-2 mx-2">
+               <h4 class="text-gray-400 font-semibold text-lg mx-2 tracking-wide max-w-xs hover:scale-110 transition duration-300 ease-in-out">{{ name }}</h4>
+               <h4 class="text-gray-400 font-semibold text-xs mx-2 tracking-wide max-w-xs hover:scale-110 transition duration-300 ease-in-out">{{ email }}</h4>
+            <div class="flex justify-between my-1">
+               <span class="text-gray-400 font-semibold text-xs mx-2 tracking-wide max-w-xs hover:scale-110 transition duration-300 ease-in-out">{{ tel }}</span>
+               <span class="text-gray-400 font-semibold text-xs mx-2 tracking-wide max-w-xs hover:scale-110 transition duration-300 ease-in-out">{{ idade }} <span v-if="idade"> Anos </span></span>
+            </div>
             </div>  
          </div>
       </section>                  
@@ -41,15 +44,21 @@ export default {
          imageData: '',
          localName: '',
          localEmail: '',
+         localTel: '',
+         lecalIdade: '',
       }
    },
    props: {
       name: { type: String, default: '',},
-      email: { type: String, default: '',}
+      email: { type: String, default: '',},
+      tel: { type: String, default: '',},
+      idade: { type: String, default: '',},
    },
    created() {
       this.localName = this.name;
       this.localEmail = this.email;
+      this.localTel = this.tel;
+      this.localIdade = this.idade
    },
    methods: {
          previewImage: function(event) {

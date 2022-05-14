@@ -30,6 +30,7 @@
                      <input type="password" 
                         maxlength="12"
                         placeholder="Senha"
+                        autocomplete="on"
                         class="apperance-none shadow-md block w-full py-3 px-4 leading-tight text-gray-700 bg-gray-50 focus:bg-white border border-gray-200 focus:border-gray-500 rounded focus:outline-none">
                   </div>
                   <div class="flex justify-between mx-1">
@@ -49,7 +50,7 @@
                      <img alt="..." class="w-5 mr-1" src="https://demos.creative-tim.com/notus-js/assets/img/google.svg">Google</button>
                   </div>
                   <div class="mb-4">
-                     <button class="inline-block w-full py-4 px-8 leading-none text-white bg-blue-400 hover:bg-blue-500 font-semibold rounded shadow">Entrar</button>
+                     <button type="submit" class="inline-block w-full py-4 px-8 leading-none text-white bg-blue-400 hover:bg-blue-500 font-semibold rounded shadow">Entrar</button>
                   </div>
                </form>
             </div>
