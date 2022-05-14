@@ -16,70 +16,48 @@
                   </h3>
                </div>
                <!--body form -->
-               <div class="relative p-6 -mt-2 flex-auto ">
+               <div class="relative p-6 -mt-4 flex-auto ">
                   <!-- <div class="flex justify-start">
                      <span class="text-sm font-semibold">Avatar</span>
                   </div> -->
-
-
-                  <div class="relative justify-center  flex">
-                        <!-- Card Avatar -->
-                        <section class="w-64 mx-auto bg-[#20354b] rounded-2xl px-6 py-4 shadow-md">
-                           <div class="flex items-center justify-between">
-                                 <span class="text-gray-400 text-sm">Perfil</span>
-                                 <span class="text-emerald-400">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z" />
-                                 </svg>
-                                 </span>
-                           </div>
-                           <div class="flex justify-between">
-                              <div  class="mt-2 w-fit mx-auto">
-                                    <label>
-                                    <div v-if="imageData.length < 1" class="file-upload-form relative cursor-pointer w-20 h-20 justify-center overflow-hidden bg-gray-100 rounded-full dark:bg-gray-600">
-                                       <svg class="absolute  w-20 h-20 text-gray-400 " fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd"></path></svg>
-                                    </div>
-                                    <input type='file' class="hidden" @change="previewImage" accept="image/*"  />        
-                                    <!-- avatar preview -->
-                                    <div class="image-preview" v-if="imageData.length > 0">
-                                       <img class="preview relative cursor-pointer w-20 h-20 justify-center overflow-hidden bg-gray-100 rounded-full dark:bg-gray-600" :src="imageData">
-                                    </div>
-                                    </label>
-                              </div>
-
-                           <div class="mt-2 ">
-                              <h2 class="text-white font-bold text-xl tracking-wide"></h2>
-                           </div>  
-                           </div>
-                        </section>                  
-                  </div>
+                  <CardPerfil  :name="name" :email="email"  />               
                   <!-- form valid -->
                   <form id="Form" action="" v-on:submit.prevent="checkForm">
                      <h4 class="text-sm font-semibold">Nome</h4>
                      <input 
-                        type="text" 
+                        type="text" maxlength="20"
                         v-model="name"
+                        required
                         class="px-3 mb-3 apperance-none shadow-md block w-full py-3 leading-tight text-gray-700 bg-gray-50 focus:bg-white border border-gray-200 focus:border-gray-500 rounded focus:outline-none"
-                        placeholder="Seu Nome">
+                        placeholder="Seu nome e sobrenome">
                      <h4 class="text-sm font-semibold">E-mail</h4>
                      <input 
-                        type="email" 
+                        type="email" maxlength="30"
+                        required
                         v-model="email"
+                        name="email"
                         class="mb-3 apperance-none shadow-md block w-full py-3 px-4 leading-tight text-gray-700 bg-gray-50 focus:bg-white border border-gray-200 focus:border-gray-500 rounded focus:outline-none"
-                        placeholder="Seu E-mail">
+                        placeholder="Example@mail.com">
                      <div class="flex justify-between">
                         <div class="mr-2">
                         <h4 class="text-sm font-semibold">Telefone</h4>
                         <input 
-                           type="tel" maxlength="12"
+                           type="text" 
+                           id="tel"
+                           required
+                           name="tel"
+                           maxlength="11"
                            onkeypress="return event.charCode >= 48 && event.charCode <= 57"
-                           class="mb-3 apperance-none shadow-md block w-full mr-4  py-3 px-4 leading-tight text-gray-700 bg-gray-50 focus:bg-white border border-gray-200 focus:border-gray-500 rounded focus:outline-none"
+                           class="mb-3 tel apperance-none shadow-md block w-full mr-4  py-3 px-4 leading-tight text-gray-700 bg-gray-50 focus:bg-white border border-gray-200 focus:border-gray-500 rounded focus:outline-none"
                            placeholder="Seu Telefone">
                         </div>
                         <div class="ml-2">
                            <h4 class="text-sm font-semibold  ">Idade</h4>
                         <input 
-                           type="number" 
+                           type="text" maxlength="2" min="1" max="100"
+                           required
+                           v-model="idade"
+                           onkeypress='return event.charCode >= 48 && event.charCode <= 57'
                            class="mb-3 apperance-none shadow-md block w-full py-3 px-4 leading-tight text-gray-700 bg-gray-50 focus:bg-white border border-gray-200 focus:border-gray-500 rounded focus:outline-none"
                            placeholder="Sua Idade">
                         </div>
@@ -87,7 +65,12 @@
                   <!-- term privacy -->
                   <div>
                      <label class="inline-flex items-center cursor-pointer">
-                        <input id="customCheckLogin" type="checkbox" class="form-checkbox border-0 rounded text-blueGray-700 ml-1 w-5 h-5 ease-linear transition-all duration-150">
+                        <input 
+                           required 
+                           id="customCheckLogin" 
+                           type="checkbox" 
+                           v-model="checkbox"
+                           class="form-checkbox border-0 rounded text-blueGray-700 ml-1 w-5 h-5 ease-linear transition-all duration-150">
                         <span class="ml-2 text-xs font-semibold text-blueGray-600">
                         Estou de acordo com o
                         <a href="javascript:void(0)" class="text-blue-500">
@@ -134,23 +117,34 @@
 </template>
 
 <script>
+import CardPerfil from "./CardPerfil.vue";
+
 export default {
    name: "cadastro-modal",
+   components: { CardPerfil },
    data() {
       return {
          showModal: false,
-         name: null,
-         email: null,
+         name: '',
+         email: '',
+         telefone: '',
+         idade: '',
+         checkbox: false,
          errors: [],
-         title: '',
          imageData: ""
       }
+   },
+   created() {
+      console.log(this.name);
    },
    methods: {
       toggleModal: function () {
          this.showModal = !this.showModal;
       },
       checkForm: function(){
+         if (this.name && this.email && this.telefone && idade ) {
+            return true;
+         }
          this.errors = [];
 
          if(!this.name){
@@ -159,44 +153,17 @@ export default {
          if(!this.email){
              this.errors.push('O email deve ser preenchido!');
          }
-         if(this.name && this.email){
-            this.errors = [];
-         };
+         // if(this.name && this.email){
+         //    this.errors = [];
+         // };
       },
       formValid: function(){
-         if(this.name && this.email) {
-            document.getElementById("Form").reset();
-            this.showModal = false;
+         if(this.name && this.email && this.telefone && this.idade && this.checkbox) {
             this.errors = [];
             this.$emit('Criou')
+            this.showModal = false;
          };
       },
-      previewImage: function(event) {
-            // Referenciando Dom input element
-            var input = event.target;
-            // verifica se tem arquivo antes de ler
-            if (input.files && input.files[0]) {
-                // cria um novo FileReader para ler a image e converter a base64 formato
-                var reader = new FileReader();
-                // Define a function de callback a ser executada, quando o FileReader terminar seu trabalho
-                reader.onload = (e) => {
-                    // arrow funcion usada aqui, para que "this.imageData" se refira ao componente imageData do Vue
-                    // Lê a imagem como base64 e define como imageData
-                    this.imageData = e.target.result;
-                }
-                // Inicia o trabalho do reader - lendo o arquivo como um URL de dados 
-                reader.readAsDataURL(input.files[0]);
-            }
-      }
    }
 }
 </script>
-
-<style>
-img.preview {
-    background-color: white;
-    border: 1px solid #DDD;
-    padding: 5px; 
-}
-
-</style>
