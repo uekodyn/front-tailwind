@@ -42,9 +42,10 @@
                         <div class="mr-2">
                         <h4 class="text-sm font-semibold">Telefone</h4>
                         <input 
-                           type="text" 
+                           type="tel" 
                            id="tel"
                            required
+                           v-model="tel"
                            name="tel"
                            maxlength="11"
                            onkeypress="return event.charCode >= 48 && event.charCode <= 57"
@@ -127,7 +128,7 @@ export default {
          showModal: false,
          name: '',
          email: '',
-         telefone: '',
+         tel: '',
          idade: '',
          checkbox: false,
          errors: [],
@@ -142,7 +143,7 @@ export default {
          this.showModal = !this.showModal;
       },
       checkForm: function(){
-         if (this.name && this.email && this.telefone && idade ) {
+         if (this.name && this.email && this.tel && idade ) {
             return true;
          }
          this.errors = [];
@@ -158,12 +159,19 @@ export default {
          // };
       },
       formValid: function(){
-         if(this.name && this.email && this.telefone && this.idade && this.checkbox) {
+         if(this.name && this.email && this.tel && this.idade && this.checkbox) {
             this.errors = [];
             this.$emit('Criou')
             this.showModal = false;
+            this.resetForm();
          };
       },
+      resetForm: function() {
+         this.name = '';
+         this.email = '';
+         this.tel = '';
+         this.idade = '';
+      }
    }
 }
 </script>
