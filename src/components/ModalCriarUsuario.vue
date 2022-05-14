@@ -20,14 +20,20 @@
                   <div class="flex justify-start">
                      <span class="text-sm font-semibold">Avatar</span>
                   </div>
-                  <div class="relative justify-center flex">
+
+                  <div class="relative justify-center  flex">
                      <!-- avatar -->
+                     <!-- avatar default -->
                      <label>
-                     <div class="relative cursor-pointer w-20 h-20 justify-center overflow-hidden bg-gray-100 rounded-full dark:bg-gray-600">
+                     <div v-if="imageData.length < 1" class="file-upload-form relative cursor-pointer w-20 h-20 justify-center overflow-hidden bg-gray-100 rounded-full dark:bg-gray-600">
                         <svg class="absolute  w-20 h-20 text-gray-400 " fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd"></path></svg>
                      </div>
-                     <input type='file' class="hidden"  />
-                  </label>
+                     <input type='file' class="hidden" @change="previewImage" accept="image/*"  />        
+                     <!-- avatar preview -->
+                     <div class="image-preview" v-if="imageData.length > 0">
+                        <img class="preview relative cursor-pointer w-20 h-20 justify-center overflow-hidden bg-gray-100 rounded-full dark:bg-gray-600" :src="imageData">
+                     </div>
+                     </label>
                   </div>
                   <!-- form valid -->
                   <form id="Form" action="" v-on:submit.prevent="checkForm">
@@ -119,6 +125,7 @@ export default {
          email: null,
          errors: [],
          title: '',
+         imageData: ""
       }
    },
    methods: {
@@ -136,7 +143,7 @@ export default {
          }
          if(this.name && this.email){
             this.errors = [];
-         }
+         };
       },
       formValid: function(){
          if(this.name && this.email) {
@@ -144,9 +151,34 @@ export default {
             this.showModal = false;
             this.errors = [];
             this.$emit('Criou')
-         }
+         };
+      },
+      previewImage: function(event) {
+            // Referenciando Dom input element
+            var input = event.target;
+            // verifica se tem arquivo antes de ler
+            if (input.files && input.files[0]) {
+                // cria um novo FileReader para ler a image e converter a base64 formato
+                var reader = new FileReader();
+                // Define a function de callback a ser executada, quando o FileReader terminar seu trabalho
+                reader.onload = (e) => {
+                    // arrow funcion usada aqui, para que "this.imageData" se refira ao componente imageData do Vue
+                    // Lê a imagem como base64 e define como imageData
+                    this.imageData = e.target.result;
+                }
+                // Inicia o trabalho do reader - lendo o arquivo como um URL de dados 
+                reader.readAsDataURL(input.files[0]);
+            }
       }
-
    }
 }
 </script>
+
+<style>
+img.preview {
+    background-color: white;
+    border: 1px solid #DDD;
+    padding: 5px; 
+}
+
+</style>
