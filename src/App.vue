@@ -16,7 +16,7 @@
                <div class="flex justify-start mt-2">
                   <p class=" text-sm text-gray-600 max-w mt-1 ">Novo por aqui? 
                      </p>
-                     <ModalCriarUsuario  class="max-w ml-2"/>
+                     <ModalCriarUsuario @criou="UsuarioCadastrado"/>
                </div>
             </div>
             <!-- form -->
@@ -41,7 +41,7 @@
                               href="#"
                               class="cursor-pointer tracking-tighter text-gray-500 border-b-2 border-gray-200 hover:border-gray-400"><span>Esqueceu a senha?</span></a></label>
                   </div>
-                  <p class="text-sm text-center font-semibold">ou login com</p>
+                  <p class="text-sm text-center font-semibold">ou entre com</p>
                   <div class="btn-wrapper text-center my-4">
                   <button class="bg-white active:bg-blueGray-50 text-blueGray-700 font-normal px-4 py-2 rounded outline-none focus:outline-none mr-2 mb-1 uppercase shadow hover:shadow-md inline-flex items-center font-bold text-xs ease-linear transition-all duration-150" type="button">
                      <img alt="..." class="w-5 mr-1" src="https://demos.creative-tim.com/notus-js/assets/img/github.svg">Github </button>
@@ -55,6 +55,15 @@
             </div>
          </div>
       </div>
+      <!-- alert -->
+         <div v-if="alertOpen" class="absolute inset-x-0 bottom-0 lg:mx-80  text-center text-white px-6 py-4 border-0 rounded mb-4  bg-blue-400">
+         <span class="inline-block text-center align-middle">
+            <b class="capitalize">Opa!</b> Cadastro realizado com sucesso.
+         </span>
+         <button class="absolute bg-transparent text-2xl font-semibold leading-none right-0 top-0 mt-4 mr-6 outline-none focus:outline-none" v-on:click="closeAlert()">
+            <span>x</span>
+         </button>
+         </div>
    </div>
 </template>
 
@@ -64,7 +73,21 @@ import ModalCriarUsuario from "./components/ModalCriarUsuario.vue"
 
 export default {
    name: "App",
-   components: { ModalCriarUsuario }
+   components: { ModalCriarUsuario },
+   data() {
+      return {
+      alertOpen: false,
+      fechouModal: false,
+      };
+   },
+   methods: {
+      UsuarioCadastrado: function(){
+         this.alertOpen = true;
+      },
+      closeAlert: function(){
+      this.alertOpen = false;
+    }
+   }
 }
 </script>
 

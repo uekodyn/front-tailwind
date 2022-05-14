@@ -1,6 +1,6 @@
 <template>
    <div>
-      <p class="text-blue-500 cursor-pointer font-bold text-sm py-1 mr-1 " v-on:click="toggleModal()">
+      <p class="text-blue-500 cursor-pointer font-bold text-sm py-1 mr-1 mx-2" v-on:click="toggleModal()">
          Crie sua conta
       </p>
       <div v-if="showModal"
@@ -12,7 +12,7 @@
                <!--header-->
                <div class="flex  justify-center p-3 px-8 mx-8 border-b border-solid border-slate-200 rounded-t">
                   <h3 class="text-xl font-bold">
-                     Criação de Usuário
+                     Cadastro de usuário
                   </h3>
                </div>
                <!--body form -->
@@ -26,11 +26,11 @@
                      <div class="relative cursor-pointer w-20 h-20 justify-center overflow-hidden bg-gray-100 rounded-full dark:bg-gray-600">
                         <svg class="absolute  w-20 h-20 text-gray-400 " fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd"></path></svg>
                      </div>
-                     <input type='file' class="hidden" :multiple="multiple" :accept="accept" />
+                     <input type='file' class="hidden"  />
                   </label>
                   </div>
                   <!-- form valid -->
-                  <form action="" v-on:submit.prevent="checkForm">
+                  <form id="Form" action="" v-on:submit.prevent="checkForm">
                      <h4 class="text-sm font-semibold">Nome</h4>
                      <input 
                         type="text" 
@@ -79,7 +79,7 @@
                   <ul><li class="text-red-400" v-for="error in errors">{{error}}</li>
                      </ul>
                   <!-- sign up with -->
-                  <p class="text-sm text-center font-semibold">ou cadastre com</p>
+                  <p class="text-sm text-center font-semibold">entrar com</p>
                   <div class="btn-wrapper text-center my-4">
                   <button class="bg-white active:bg-blueGray-50 text-blueGray-700 font-normal px-4 py-2 rounded outline-none focus:outline-none mr-2 mb-1 uppercase shadow hover:shadow-md inline-flex items-center font-bold text-xs ease-linear transition-all duration-150" type="button">
                      <img alt="..." class="w-5 mr-1" src="https://demos.creative-tim.com/notus-js/assets/img/github.svg">Github </button>
@@ -117,7 +117,8 @@ export default {
          showModal: false,
          name: null,
          email: null,
-         errors: []
+         errors: [],
+         title: '',
       }
    },
    methods: {
@@ -133,11 +134,16 @@ export default {
          if(!this.email){
              this.errors.push('O email deve ser preenchido!');
          }
+         if(this.name && this.email){
+            this.errors = [];
+         }
       },
       formValid: function(){
          if(this.name && this.email) {
+            document.getElementById("Form").reset();
             this.showModal = false;
             this.errors = [];
+            this.$emit('Criou')
          }
       }
 
